@@ -1,5 +1,10 @@
 # brek-python
 
+[![build status](https://github.com/Tatch-AI/brek-python/actions/workflows/release.yml/badge.svg)](https://github.com/Tatch-AI/brek-python/actions)
+[![SemVer](https://img.shields.io/badge/SemVer-2.0.0-blue)]()
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+[![AutoRel](https://img.shields.io/badge/%F0%9F%9A%80%20AutoRel-2D4DDE)](https://github.com/mhweiner/autorel)
+
 This project is the Python port of the original [`brek`](https://github.com/mhweiner/brek) project.
 
 `brek-python` keeps the same core principles:
@@ -75,3 +80,5 @@ make test
 ## Support
 
 The original implementation lives at [`mhweiner/brek`](https://github.com/mhweiner/brek).
+
+Releases are automated with [autorel](https://github.com/mhweiner/autorel) from conventional commits on `main` and `next`.

@@ -1,0 +1,20 @@
+{
+  "name": "brek-python",
+  "private": false,
+  "version": "0.0.0-autorel",
+  "description": "Python port of brek, a structured config loader with layered files and loaders.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tatch-AI/brek-python.git"
+  },
+  "homepage": "https://github.com/Tatch-AI/brek-python",
+  "keywords": [
+    "config",
+    "configuration",
+    "python",
+    "loader",
+    "secrets",
+    "aws"
+  ]
+}
