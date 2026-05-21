@@ -82,3 +82,5 @@ make test
 The original implementation lives at [`mhweiner/brek`](https://github.com/mhweiner/brek).
 
 Releases are automated with [autorel](https://github.com/mhweiner/autorel) from conventional commits on `main` and `next`.
+
+Release commits should follow the same conventional-commit format used by the original project.
