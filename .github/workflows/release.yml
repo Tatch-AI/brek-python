@@ -30,3 +30,14 @@ jobs:
       - run: npx autorel@^2
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Trigger PyPI publish workflow
+        env:
+          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GITHUB_SHA: ${{github.sha}}
+        run: |
+          tag="$(gh api repos/Tatch-AI/brek-python/releases --jq ".[] | select(.target_commitish == \"${GITHUB_SHA}\") | .tag_name" | head -n 1)"
+          if [ -z "$tag" ]; then
+            echo "No release tag found for ${GITHUB_SHA}; skipping PyPI publish dispatch."
+            exit 0
+          fi
+          gh workflow run pypi-publish.yml --repo Tatch-AI/brek-python -f release_tag="$tag"
