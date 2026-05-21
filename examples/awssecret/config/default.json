@@ -1,0 +1,8 @@
+{
+  "secret": {
+    "[awsSecret]": {
+      "key": "demo",
+      "region": "us-west-2"
+    }
+  }
+}
