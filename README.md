@@ -10,9 +10,10 @@ This project is the Python port of the original [`brek`](https://github.com/mhwe
 `brek` keeps the same core principles:
 - declarative JSON configuration
 - layered config files
-- environment variable interpolation
+- strict environment variable interpolation via `${VAR}`
 - loader-based dynamic values
 - a bundled AWS Secrets Manager loader
+- strict runtime resolution for required config paths
 
 `brek` stands for **B**locking **R**esolution of **E**nvironment **K**eys.
 
@@ -53,14 +54,17 @@ Generate the resolved cache:
 brek load-config
 ```
 
+`brek load-config` always re-resolves config and rewrites the generated cache file.
+Within a running Python process, `GetConfig()` is cached after the first load.
+
 Or use it from Python:
 
 ```python
-from brek import DefaultLoaders, GetConfig, SetLoaders
+from brek import DefaultLoaders, GetConfig, SetLoaders, require_path
 
 SetLoaders(DefaultLoaders())
 conf = GetConfig()
-print(conf["port"])
+print(require_path(conf, "port"))
 ```
 
 ## Features
@@ -70,6 +74,7 @@ print(conf["port"])
 - Environment variable expansion via `${VAR}` syntax.
 - Loader support for runtime values.
 - Bundled `awsSecret` loader for AWS Secrets Manager.
+- Strict access helpers for required and optional paths.
 - Standard-library core with no mandatory runtime dependencies.
 
 ## Docs

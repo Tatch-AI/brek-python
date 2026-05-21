@@ -16,9 +16,10 @@ from .config import (
     set_loaders,
     write_conf_json,
 )
+from .access import OptionalPath, RequirePath, optional_path, require_path
 from .default_loaders import DefaultLoaders, default_loaders
 from .env import EnvArguments, GetEnvArguments, GetEnvOverrides, IsEnvironmentVariable, get_env_arguments, get_env_overrides, is_environment_variable
-from .errors import ConfNotLoaded, InvalidConf, LoaderNotFound
+from .errors import ConfNotLoaded, ConfigPathNotFound, InvalidConf, LoaderNotFound
 from .loader import (
     AvailableLoaderNames,
     IsLoader,
@@ -36,10 +37,12 @@ from .resolve import ResolveConf, resolve_conf
 __all__ = [
     "AvailableLoaderNames",
     "ConfNotLoaded",
+    "ConfigPathNotFound",
     "ConfSources",
     "ConfigDir",
     "ConfigJSONPath",
     "DefaultLoaders",
+    "OptionalPath",
     "DeleteConfJSON",
     "EnvArguments",
     "GetConfig",
@@ -60,6 +63,7 @@ __all__ = [
     "ResolveConf",
     "Run",
     "SetLoaders",
+    "RequirePath",
     "WriteConfJSON",
     "WriteDir",
     "available_loader_names",
@@ -82,7 +86,9 @@ __all__ = [
     "merge_confs",
     "resolve_conf",
     "run",
+    "optional_path",
     "set_loaders",
+    "require_path",
     "write_conf_json",
     "write_dir",
 ]

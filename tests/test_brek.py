@@ -12,14 +12,16 @@ from unittest import mock
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SRC = ROOT / "src"
-if str(SRC) not in sys.path:
-    sys.path.insert(0, str(SRC))
+if str(SRC) in sys.path:
+    sys.path.remove(str(SRC))
+sys.path.insert(0, str(SRC))
 
 import brek
 import brek.config as config_module
 from brek import (
     AvailableLoaderNames,
     ConfNotLoaded,
+    ConfigPathNotFound,
     ConfigDir,
     ConfigJSONPath,
     DefaultLoaders,
@@ -37,6 +39,8 @@ from brek import (
     MergeConfs,
     Run,
     SetLoaders,
+    OptionalPath,
+    RequirePath,
     WriteConfJSON,
     available_loader_names,
     config_dir,
@@ -53,8 +57,10 @@ from brek import (
     load_config,
     loader_name,
     merge_confs,
+    optional_path,
     resolve_conf,
     run,
+    require_path,
     set_loaders,
     write_conf_json,
 )
@@ -218,6 +224,10 @@ class TestResolve(BrekTestCase):
         with self.assertRaises(LoaderNotFound):
             resolve_conf({"[missing]": "x"}, {})
 
+    def test_missing_env_raises(self) -> None:
+        with self.assertRaises(InvalidConf):
+            resolve_conf({"secret": "${MISSING_ENV}"}, {})
+
 
 class TestConfig(BrekTestCase):
     def test_load_get_delete_and_cache(self) -> None:
@@ -251,6 +261,31 @@ class TestConfig(BrekTestCase):
 
     def _tmp_dir(self) -> str:
         return tempfile.mkdtemp(prefix="brek-python-")
+
+
+class TestAccess(BrekTestCase):
+    def test_require_path(self) -> None:
+        value = {
+            "integrations": {
+                "google": {
+                    "apiKey": "secret",
+                }
+            },
+            "items": [{"name": "alpha"}],
+        }
+
+        self.assertEqual(require_path(value, "integrations.google.apiKey"), "secret")
+        self.assertEqual(RequirePath(value, "items", "0", "name"), "alpha")
+
+    def test_optional_path(self) -> None:
+        value = {"foo": {"bar": 1}}
+
+        self.assertEqual(optional_path(value, "foo.bar"), 1)
+        self.assertEqual(OptionalPath(value, "missing.path", default="fallback"), "fallback")
+
+    def test_missing_path_raises(self) -> None:
+        with self.assertRaises(ConfigPathNotFound):
+            require_path({"foo": {}}, "foo.bar")
 
 
 class TestAwsSecretLoader(BrekTestCase):

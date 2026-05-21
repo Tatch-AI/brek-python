@@ -1,6 +1,8 @@
 # AWS Secrets Example
 
 This example shows the bundled `awsSecret` loader in a minimal app.
+It also demonstrates the strict config read path: `GetConfig()` returns the
+resolved tree, and required paths should be accessed explicitly.
 
 ## Run
 

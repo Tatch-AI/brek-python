@@ -26,3 +26,12 @@ class LoaderNotFound(Exception):
     def __str__(self) -> str:
         available = ", ".join(self.available) if self.available else "none"
         return f'LOADER_NOT_FOUND: "{self.loader_name}". Available loaders: {available}'
+
+
+class ConfigPathNotFound(Exception):
+    def __init__(self, path: Sequence[str]):
+        self.path = list(path)
+        super().__init__(str(self))
+
+    def __str__(self) -> str:
+        return f'CONFIG_PATH_NOT_FOUND: {".".join(self.path)}'

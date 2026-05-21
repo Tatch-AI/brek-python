@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 from typing import Any
 
+from .errors import InvalidConf
 from .env import is_environment_variable
 from .errors import LoaderNotFound
 from .loader import LoaderDict, available_loader_names, is_loader, loader_name
@@ -29,7 +30,10 @@ def _resolve_any(value: Any, loaders: LoaderDict) -> Any:
 
     if isinstance(value, str) and is_environment_variable(value):
         name = value[2:-1]
-        return os.getenv(name, "")
+        env_value = os.getenv(name)
+        if env_value is None or env_value == "":
+            raise InvalidConf([f'environment variable "{name}" is not set'])
+        return env_value
 
     return value
 
