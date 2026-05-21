@@ -1,5 +1,5 @@
 {
-  "name": "brek-python",
+  "name": "brek",
   "private": false,
   "version": "0.0.0-autorel",
   "description": "Python port of brek, a structured config loader with layered files and loaders.",

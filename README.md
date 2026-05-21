@@ -1,4 +1,4 @@
-# brek-python
+# brek
 
 [![build status](https://github.com/Tatch-AI/brek-python/actions/workflows/release.yml/badge.svg)](https://github.com/Tatch-AI/brek-python/actions)
 [![SemVer](https://img.shields.io/badge/SemVer-2.0.0-blue)]()
@@ -7,7 +7,7 @@
 
 This project is the Python port of the original [`brek`](https://github.com/mhweiner/brek) project.
 
-`brek-python` keeps the same core principles:
+`brek` keeps the same core principles:
 - declarative JSON configuration
 - layered config files
 - environment variable interpolation
@@ -18,7 +18,13 @@ This project is the Python port of the original [`brek`](https://github.com/mhwe
 
 ## Quick Start
 
-Install from a checkout:
+Install from PyPI:
+
+```bash
+python -m pip install brek
+```
+
+Or install from a checkout:
 
 ```bash
 python -m pip install -e .
@@ -76,6 +82,15 @@ print(conf["port"])
 ```bash
 make test
 ```
+
+## Release
+
+Releases are created by AutoRel from conventional commits on `main` and `next`.
+When GitHub creates a release, the `pypi-publish.yml` workflow builds an sdist and wheel
+and publishes them to PyPI using Trusted Publishing.
+
+To enable publishing, configure `Tatch-AI/brek-python` as a trusted publisher in the
+PyPI project settings for the `pypi` environment and `.github/workflows/pypi-publish.yml`.
 
 ## Support
 

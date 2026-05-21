@@ -3,15 +3,16 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "brek-python"
-version = "0.1.0"
+name = "brek"
+version = "0.0.1"
 description = "Python port of brek, a structured config loader with layered files and loaders."
 readme = "README.md"
 requires-python = ">=3.11"
-license = { text = "MIT" }
+license = "MIT"
 authors = [
   { name = "Sushant Vema" }
 ]
+urls = { "Homepage" = "https://github.com/Tatch-AI/brek-python", "Repository" = "https://github.com/Tatch-AI/brek-python", "Issues" = "https://github.com/Tatch-AI/brek-python/issues" }
 keywords = [
   "config",
   "configuration",
@@ -23,7 +24,6 @@ keywords = [
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Intended Audience :: Developers",
-  "License :: OSI Approved :: MIT License",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3 :: Only",
   "Programming Language :: Python :: 3.11",

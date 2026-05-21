@@ -1,6 +1,6 @@
 # Getting Started
 
-`brek-python` keeps configuration in JSON files, resolves it into a Python dictionary at startup, and writes the resolved result back to disk for reuse.
+`brek` keeps configuration in JSON files, resolves it into a Python dictionary at startup, and writes the resolved result back to disk for reuse.
 
 ## Install
 
