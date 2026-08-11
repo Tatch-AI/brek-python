@@ -9,4 +9,5 @@ dist/
 *.egg-info/
 .coverage
 config/config.json
+.chorograph/
 .DS_Store
