@@ -26,5 +26,5 @@
 /**
  * AWS Secrets Manager — runtime secret fetch for database passwords, API keys, and other
  * credentials referenced in layered JSON config via the bundled awsSecret loader.
- * @external AWS-Secrets-Manager in:Platform
+ * @external AWS-Secrets-Manager in:DevEx
  */
