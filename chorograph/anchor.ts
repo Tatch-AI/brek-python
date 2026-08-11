@@ -1,4 +1,4 @@
-// CHOROGRAPH-ANCHOR: swapped out by the estate-wide render (cooked/estate-map). Shared/stub declarations only.
+// CHOROGRAPH-ANCHOR: shared/stub declarations only. Merged estate-wide by chorograph --anchors.
 //
 // This file lets `npx chorograph render .` pass inside this repo alone. When the whole
 // Tatch-AI estate is rendered as one map, every repo's anchor.ts is deleted and replaced by a
