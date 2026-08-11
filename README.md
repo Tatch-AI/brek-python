@@ -1,5 +1,12 @@
 # brek
 
+> **Orientation**: [docs/BUSINESS_CONTEXT.md](docs/BUSINESS_CONTEXT.md) explains what this
+> library means to Harper (DevEx config loader for Python services at boot time) and what must
+> survive a rewrite. [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) is the deep technical map.
+> The architecture is annotated with [chorograph](https://github.com/flancast90/chorograph)
+> — render the live map with `npx chorograph render . --no-open` (declarations live in
+> `chorograph/`).
+
 [![build status](https://github.com/Tatch-AI/brek-python/actions/workflows/release.yml/badge.svg)](https://github.com/Tatch-AI/brek-python/actions)
 [![SemVer](https://img.shields.io/badge/SemVer-2.0.0-blue)]()
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
