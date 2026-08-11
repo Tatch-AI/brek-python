@@ -57,7 +57,7 @@
  * existing `config/config.json` from disk; else falls back to full `load-config` resolution.
  * Thread-safe via `RLock` + `fcntl` file lock on writes. src/brek/config.py (`get_config`).
  * @fn get-config of:brek-python
- * @calls load-config cold-starts resolution when no on-disk cache exists
+ * @calls brek-python.load-config cold-starts resolution when no on-disk cache exists
  */
 
 /**
